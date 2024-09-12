@@ -1,0 +1,499 @@
+:root {
+    --color-primary: #003366;
+    --color-secondary: #007bff;
+    --color-text-light: #fff;
+    --color-text-muted: #666666;
+    --color-bg-light: #f8f9fa;
+    --color-bg-card: white;
+    --color-shadow: rgba(0, 0, 0, 0.25);
+    --color-border-light: #ddd;
+    --color-hover: #495057;
+    --color-accent: #4CAF50;
+    --color-accent-hover: #45a049;
+    --color-error: #f44336;
+    --color-error-hover: #e60000;
+    --color-logout-bg: #dc3545;
+    --color-logout-hover: #c82333;
+    --color-navbar-shadow: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    /* Evita el scroll en el body */
+    font-family: "Inter", sans-serif;
+}
+
+.inter-font {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-64 {
+    width: 64px;
+}
+
+.rounded-16 {
+    border-radius: 16px;
+}
+
+.fs-15 {
+    font-size: 15px;
+}
+
+.fs-20 {
+    font-size: 20px;
+}
+
+.fs-72 {
+    font-size: 72px;
+}
+
+.fs-32 {
+    font-size: 32px;
+}
+
+.fs-48 {
+    font-size: 48px;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.h-navbar {
+    height: 92px;
+}
+
+.h-web {
+    height: -webkit-fill-available;
+    padding: 0px 16px;
+}
+
+.gap-navbar {
+    gap: 32px;
+}
+
+.separator {
+    border: 1px var(--color-text-light) solid;
+}
+
+.btn-navbar {
+    padding: 8px 16px;
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0px 5px 2px var(--color-shadow);
+}
+
+.btn-navbar:hover {
+    translate: 2px -2px;
+}
+
+.fondo-home {
+    background-image: url(../img/pixelcut-export.png);
+    background-repeat: round;
+}
+
+.p-home-img {
+    padding: 48px 0px;
+}
+
+.home-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 0px 0px 32px;
+}
+
+.img-home {
+    width: 591px;
+    height: 569px;
+}
+
+.line-s {
+    line-height: 1.3em;
+}
+
+.separator-card {
+    border: 2px var(--color-primary) solid;
+}
+
+.btn-card {
+    padding: 8px 16px;
+    border-radius: 24px;
+    border: none;
+    box-shadow: 0px 5px 2px var(--color-shadow);
+    width: 100%;
+}
+
+.btn-card:hover {
+    scale: 0.9;
+}
+
+.img-card {
+    height: 296px;
+    border-radius: 16px 16px 0px 0px;
+}
+
+.shadow-card {
+    box-shadow: 0px 3px 3px var(--color-shadow);
+}
+
+.gap-service {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0px;
+    gap: 48px;
+}
+
+.second-text {
+    color: var(--color-text-muted);
+}
+
+.footer {
+    display: flex;
+    position: sticky;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 0px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.red-social {
+    display: flex;
+    gap: 22px;
+}
+
+
+/* Contenedor de la tabla */
+
+.table-container {
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--color-bg-card);
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--color-navbar-shadow);
+}
+
+
+/* Barra de acciones (para el botón Crear Usuario) */
+
+.action-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+
+/* Estilos para el botón "Crear Usuario" */
+
+.create-user-button {
+    padding: 10px 20px;
+    background-color: var(--color-accent);
+    color: var(--color-text-light);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.create-user-button:hover {
+    background-color: var(--color-accent-hover);
+}
+
+
+/* Estilos para la tabla */
+
+.display {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.display thead {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+.display th,
+.display td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid var(--color-border-light);
+}
+
+.display tbody tr:nth-child(even) {
+    background-color: var(--color-bg-light);
+}
+
+
+/* Estilos para los botones de edición y eliminación */
+
+.edit-button,
+.delete-button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.edit-button {
+    background-color: var(--color-accent);
+    color: var(--color-text-light);
+}
+
+.delete-button {
+    background-color: var(--color-error);
+    color: var(--color-text-light);
+}
+
+.edit-button:hover {
+    background-color: var(--color-accent-hover);
+}
+
+.delete-button:hover {
+    background-color: var(--color-error-hover);
+}
+
+.main-layout {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+
+/* Estilos para el menú lateral */
+
+.sidebar {
+    width: 250px;
+    position: fixed;
+    top: 90px;
+    bottom: 0px;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding-top: 20px;
+    z-index: 500;
+    overflow: hidden;
+    flex-shrink: 0;
+    /* Evita que el menú lateral cambie de tamaño */
+}
+
+.sidebar a {
+    display: block;
+    color: var(--color-text-light);
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+    background-color: var(--color-hover);
+}
+
+.sidebar a.active {
+    background-color: var(--color-secondary);
+    font-weight: bold;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Logout en la parte inferior del menú */
+
+.sidebar .logout {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+.logout a {
+    color: var(--color-text-light);
+    padding: 15px;
+    display: block;
+    background-color: var(--color-logout-bg);
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.logout a:hover {
+    background-color: var(--color-logout-hover);
+}
+
+
+/* Contenedor principal */
+
+.container-main {
+    flex: 1;
+    padding: 10px;
+    margin-left: 250px;
+    background-color: #f8f9fa;
+    overflow-y: auto;
+    /* Activar el scroll vertical en el contenedor principal */
+    height: calc(100vh - 165px);
+    /* Restar la altura del header y footer */
+    box-sizing: border-box;
+}
+
+
+/* Títulos dentro del contenedor principal */
+
+.container-main h1,
+.container-main h2,
+.container-main h3 {
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    /* Negrita para títulos */
+    color: #003366;
+    /* Color principal */
+    margin-bottom: 20px;
+}
+
+
+/* Párrafos dentro del contenedor principal */
+
+.container-main p {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    color: #666666;
+    /* Color gris para texto */
+    line-height: 1.6;
+}
+
+
+/* Botones dentro del contenedor principal */
+
+.container-main .btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    /* Azul principal */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    /* Sombra para botones */
+}
+
+.container-main .btn:hover {
+    background-color: #0056b3;
+    /* Color de hover más oscuro */
+}
+
+
+/* Formularios dentro del contenedor principal */
+
+.container-main form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.container-main form input,
+.container-main form select,
+.container-main form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.container-main form input:focus,
+.container-main form select:focus,
+.container-main form textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+/* Tablas dentro del contenedor principal */
+
+.container-main table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.container-main table th,
+.container-main table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 16px;
+}
+
+.container-main table th {
+    background-color: #003366;
+    color: #fff;
+}
+
+.container-main table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+header {
+    text-align: center;
+    flex-shrink: 0;
+    /* Evita que el header cambie de tamaño */
+    z-index: 1000;
+}
+
+
+/* Media Queries para Responsividad */
+
+@media (max-width: 768px) {
+    .container-main {
+        padding: 15px;
+    }
+    .container-main h1 {
+        font-size: 24px;
+    }
+    .container-main .btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}

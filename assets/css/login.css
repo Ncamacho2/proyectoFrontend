@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.inter-font {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.w-70{
+    width: 70%;
+}
+
+.h-login {
+    height: 679px;
+}
+
+.mt-input {
+    margin-top: 40px;
+}
+
+.input-login {
+    border: none;
+    outline: none;
+    color: #004080;
+}
+
+.input-login:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: #004080;
+}
+
+.btn-login {
+    padding: 8px 16px;
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0px 5px 2px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(to right, #004080, #0061A5);
+}
+
+.btn-login:hover{
+    scale: 0.95;
+    background: linear-gradient(to right, #0061A5, #004080);
+}
+
+.link {
+    text-decoration: none;
+}
+
+.bg-text-login {
+    background: linear-gradient(to right, #004080, #0061A5);
+    color: white;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 24% 100%);
+    padding-right: 2em;
+}
+
+.fs-title-login {
+    font-size: 3em;
+    font-weight: 800;
+    text-shadow: 5px 4px rgb(0, 0, 0, 0.25);
+    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.25);
+}
+
+.fs-title-signup {
+    font-size: 3em;
+    font-weight: 800;
+    text-shadow: -5px 4px rgb(0, 0, 0, 0.25);
+    box-shadow: 0px 3px 0px rgba(0, 0, 0, 0.25);
+}
+
+.fs-text-login {
+    font-size: 1.5em;
+}
+
+
+.bg-text-signup {
+    background: linear-gradient(to right, #004080, #0061A5);
+    color: white;
+    clip-path: polygon(0 0, 0 324%, 100% 0%, 100% 0%);
+    padding-left: 2em;
+}
