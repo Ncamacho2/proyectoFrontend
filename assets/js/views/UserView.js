@@ -10,7 +10,9 @@ class UserView {
                 { title: "Documento" },
                 { title: "Teléfono" },
                 { title: "Acciones" }
-            ]
+            ],
+            responsive: true,
+
         });
 
         this.renderUsers();
