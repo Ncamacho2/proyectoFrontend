@@ -482,18 +482,65 @@ header {
     z-index: 1000;
 }
 
+.navbar-collapse {
+    flex-grow: 0;
+}
+
 
 /* Media Queries para Responsividad */
 
+
+/* Ocultar el menú en pantallas pequeñas */
+
 @media (max-width: 768px) {
+    .navbar-collapse {
+        flex-grow: 1;
+    }
+    .navbar-nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .navbar-toggler {
+        background-color: var(--color-secondary);
+        border: none;
+    }
+    .navbar-toggler-icon {
+        color: white;
+    }
+    .navbar-nav .nav-item {
+        text-align: center;
+    }
+    .btn-navbar {
+        width: 100%;
+        /* Botones ocupan el ancho completo en móviles */
+        margin-bottom: 10px;
+    }
+    .sidebar {
+        transform: translateX(-250px);
+        /* Ocultar el menú moviéndolo fuera de la pantalla */
+        transition: transform 0.3s ease;
+        position: fixed;
+        /* Asegurarse de que el menú sea fijo */
+    }
+    .sidebar.active {
+        transform: translateX(0);
+        /* Mostrar el menú cuando esté activo */
+    }
+    /* Ajustar el contenedor principal para pantallas pequeñas */
     .container-main {
-        padding: 15px;
+        margin-left: 0;
+        padding: 20px;
     }
-    .container-main h1 {
-        font-size: 24px;
-    }
-    .container-main .btn {
-        font-size: 14px;
-        padding: 8px 16px;
+    /* Botón para abrir el menú */
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background-color: var(--color-secondary);
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
     }
 }
