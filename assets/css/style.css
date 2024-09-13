@@ -492,7 +492,7 @@ header {
 
 /* Ocultar el menú en pantallas pequeñas */
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .navbar-collapse {
         flex-grow: 1;
     }
