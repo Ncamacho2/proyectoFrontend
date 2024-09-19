@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Imágenes a Firebase</title>
+    <!-- Incluye Firebase mediante CDN -->
+    <!-- Firebase App (Para inicializar Firebase) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Firebase Storage -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <!-- Firebase Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+</head>
+</head>
+
+<body>
+    <h1>Subir Imágenes a Firebase</h1>
+
+    <!-- Input para seleccionar la imagen -->
+    <input type="file" id="imageUpload" accept="image/*">
+    <br><br>
+    <!-- Botón para subir la imagen -->
+    <button onclick="handleImageUpload()">Subir Imagen</button>
+
+    <!-- Espacio para mostrar el progreso de la subida -->
+    <p id="progress"></p>
+
+    <!-- Espacio para mostrar la URL de la imagen -->
+    <p id="imageUrl"></p>
+
+
+
+
+    <!-- Tu archivo JavaScript -->
+    <script src="assets/js/uploadFile.js"></script>
+
+</body>
+
+</html>
