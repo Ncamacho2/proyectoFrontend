@@ -1,5 +1,6 @@
 class User {
-    constructor(id, id_role, document_type, document, image_url, names, lastnames, address, phone, birth_date, is_active, is_authenticated) {
+    constructor(id, id_role, document_type, document, image_url, names, lastnames, address, phone, birth_date, is_active, is_authenticated,
+        email, password) {
         this.id = id;
         this.id_role = id_role;
         this.document_type = document_type;
@@ -12,6 +13,8 @@ class User {
         this.birth_date = new Date(birth_date);
         this.is_active = is_active;
         this.is_authenticated = is_authenticated;
+        this.email = email;
+        this.password = password;
     }
 
     // Método para activar un usuario

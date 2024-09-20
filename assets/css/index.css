@@ -1,3 +1,83 @@
+:root {
+    --card-form-bg-color: #BBDEFB;
+    --btn-submit-color: #7DC67C;
+    --bg-header-color: #1976D2;
+}
+
+/* ======================================== **  DEFAULTS  ** ================================================= */
+main {
+    margin-top: 5rem !important;
+    margin-bottom: 5rem !important;
+}
+
+.btn-submit {
+    background-color: var(--btn-submit-color);
+    color: white;
+}
+
+/* ======================================== **  MENU  ** ================================================= */
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    text-decoration: underline white;
+}
+
+.vertical-main {
+    position: absolute;
+    width: 13rem;
+    height: 80vh;
+    padding-right: 0.3rem;
+}
+
+.vertical-main nav .nav-link {
+    color: white;
+    padding: .8rem 1rem;
+    margin-bottom: 3.7%;
+    margin-right: 1%;
+    border-radius: 7px;
+    -moz-box-shadow: 0 4px 4px rgba(39, 39, 40, 0.4);
+    -webkit-box-shadow: 0 4px 4px rgba(40, 39, 39, 0.4);
+    box-shadow: 0 4px 4px rgba(40, 39, 39, 0.4);
+}
+
+.vertical-main nav .nav-link + .active {
+    background: #1887F7;
+}
+
+/* ========================================= **  CARDS  ** ================================================= */
+
+.card-form {
+    background-color: var(--card-form-bg-color);
+}
+
+
+/* ========================================= **  TABLES  ** ================================================= */
+
+.table-primary-head th {
+    background-color: var(--bg-header-color);
+    color: white;
+}
+
+/* ========================================== **  PAGINATION  ** ===============================================*/
+
+.pagination-custom .page-item .page-link {
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 7px;
+}
+
+.pagination-custom .page-item + .active > .page-link{
+    background-color: var(--bg-header-color);
+}
+
+.pagination-custom .page-item .page-link{
+    border: 0;
+}
+
+.pagination-custom .disabled > .page-link {
+    background-color: white !important;
+}
+
+/* ========================================== **  OTHERS  ** ===============================================*/
+
 * {
     margin: 0;
     padding: 0;
@@ -155,6 +235,13 @@
     color: #666666;
 }
 
+.red-social {
+    display: flex;
+    gap: 22px;
+}
+
+/* ========================================== **  FOOTER  ** ===============================================*/
+
 .footer {
     display: flex;
     flex-direction: column;
@@ -163,7 +250,9 @@
     gap: 8px;
 }
 
-.red-social {
-    display: flex;
-    gap: 22px;
+.footer-complement {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
