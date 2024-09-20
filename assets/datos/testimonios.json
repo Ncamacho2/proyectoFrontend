@@ -1,0 +1,111 @@
+[
+    {
+      "name": "Juan Pérez",
+      "title": "Atención en casa excepcional",
+      "stars": 5,
+      "description": "El servicio de enfermería en casa ha sido una gran ayuda para mi madre. Los enfermeros son amables, profesionales y siempre puntuales. No podríamos estar más satisfechos."
+    },
+    {
+      "name": "Laura Gómez",
+      "title": "Tranquilidad en cada cita",
+      "stars": 5,
+      "description": "Gracias al acompañamiento a citas médicas, he podido manejar mejor mis controles médicos. Me siento segura y apoyada en todo momento. ¡Muy recomendable!"
+    },
+    {
+      "name": "Carlos Rodríguez",
+      "title": "Cuidado hospitalario impecable",
+      "stars": 5,
+      "description": "La atención recibida en el hospital fue excelente. El personal estuvo atento y siempre dispuesto a ayudar. Me sentí muy cuidado durante todo el proceso."
+    },
+    {
+      "name": "Ana Martínez",
+      "title": "Recuperación eficiente en casa",
+      "stars": 5,
+      "description": "Contraté el servicio de enfermería en casa para mi recuperación y fue una de las mejores decisiones. El equipo es increíblemente profesional y me ayudaron a seguir todas las indicaciones médicas."
+    },
+    {
+      "name": "Marta Sánchez",
+      "title": "Apoyo en citas médicas confiable",
+      "stars": 5,
+      "description": "El acompañamiento a mis citas médicas me ha dado tranquilidad. Siempre están atentos y me ayudan con todo lo necesario. Recomiendo ampliamente este servicio."
+    },
+    {
+      "name": "Luis Ramírez",
+      "title": "Recuperación rápida y segura",
+      "stars": 5,
+      "description": "Después de una cirugía, el servicio de enfermería en casa fue fundamental para mi recuperación. Recibí una atención cálida y profesional que superó todas mis expectativas."
+    },
+    {
+      "name": "Sofía Fernández",
+      "title": "Buen servicio con margen de mejora",
+      "stars": 4,
+      "description": "El servicio de enfermería en casa es muy bueno. Aunque tuve algunos problemas de coordinación al principio, el equipo lo resolvió rápidamente y la calidad del servicio es excelente."
+    },
+    {
+      "name": "Javier López",
+      "title": "Acompañamiento excepcional",
+      "stars": 5,
+      "description": "Increíble servicio de acompañamiento a citas médicas. Siempre están pendientes de cada detalle y me siento seguro en todo momento. ¡Cinco estrellas sin duda!"
+    },
+    {
+      "name": "Elena Torres",
+      "title": "Atención hospitalaria de primer nivel",
+      "stars": 5,
+      "description": "El personal de enfermería en el hospital fue maravilloso. Su dedicación y profesionalismo hicieron que mi estancia fuera mucho más llevadera. Lo recomendaría a cualquier persona."
+    },
+    {
+      "name": "Ricardo Méndez",
+      "title": "Atención en casa sin comparación",
+      "stars": 5,
+      "description": "El equipo de enfermería fue increíble. Se encargaron de todo con profesionalismo y mucho cuidado. Estoy muy agradecido por el trato recibido. ¡Definitivamente 5 estrellas!"
+    },
+    {
+      "name": "Patricia Herrera",
+      "title": "Buen servicio pero con áreas de mejora",
+      "stars": 4,
+      "description": "El acompañamiento a las citas médicas fue bueno, aunque hubo un pequeño retraso en una ocasión. A pesar de eso, el equipo fue atento y profesional. Lo recomendaría con algunos ajustes."
+    },
+    {
+      "name": "Fernando Castillo",
+      "title": "Servicio hospitalario excelente",
+      "stars": 5,
+      "description": "El servicio de enfermería en el hospital fue impecable. Siempre me sentí acompañado y atendido en todo momento. No podría haber pedido una mejor experiencia durante mi estancia."
+    },
+    {
+      "name": "Andrea Morales",
+      "title": "Atención adecuada, pero puede mejorar",
+      "stars": 3,
+      "description": "El servicio de enfermería en casa fue adecuado, aunque tuve algunos problemas de comunicación con el equipo. A pesar de esto, la atención fue profesional, pero creo que podrían mejorar en cuanto a la puntualidad."
+    },
+    {
+      "name": "Camila Ortega",
+      "title": "Enfermería en casa excepcional",
+      "stars": 5,
+      "description": "La atención recibida en casa fue impecable. El personal de enfermería estuvo siempre atento, amable y dispuesto a ayudar en todo momento. Muy profesionales y con un gran trato humano."
+    },
+    {
+      "name": "Mario Suárez",
+      "title": "Acompañamiento perfecto en mis citas médicas",
+      "stars": 5,
+      "description": "El acompañamiento a mis citas médicas fue de primera clase. Siempre puntuales y con un servicio personalizado que me hizo sentir seguro y cuidado. No dudaría en volver a contratarlos."
+    },
+    {
+      "name": "Isabel Rivas",
+      "title": "Cuidado hospitalario de alto nivel",
+      "stars": 5,
+      "description": "El servicio de enfermería en el hospital fue excelente. Me sentí respaldada en todo momento, y la atención que recibí fue tanto profesional como empática. ¡Cinco estrellas bien merecidas!"
+    },
+    {
+      "name": "Gabriela Nuñez",
+      "title": "Profesionales y dedicados",
+      "stars": 5,
+      "description": "El servicio de enfermería en casa superó todas mis expectativas. Fueron profesionales, atentos y me brindaron toda la atención que necesitaba durante mi recuperación."
+    },
+    {
+      "name": "Diego Moreno",
+      "title": "Excelente equipo médico",
+      "stars": 5,
+      "description": "El equipo de enfermería fue muy profesional. Se encargaron de todo con mucha dedicación y estuvieron disponibles para cualquier duda que tuve. ¡Recomendado al 100%!"
+    }
+  ]
+  
