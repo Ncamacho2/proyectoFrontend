@@ -31,39 +31,45 @@
       <form id="testimonial-form" class="form-create-testimonial" action="">
         <h1>Deja tu testimonio</h1>
         <label for="nombre">Primer nombre</label>
-        <input class="inputs-testimonial" type="text" id="nombre" />
+        <input class="inputs-testimonial" type="text" id="nombre" required />
         <label for="nombre">Primer apellido</label>
-        <input class="inputs-testimonial" type="text" id="nombre" />
+        <input class="inputs-testimonial" type="text" id="apellido" required />
 
         <label for="tittle">Titulo</label>
-        <input class="inputs-testimonial" type="text" id="tittle" />
+        <input class="inputs-testimonial" type="text" id="titulo" required />
         <label for="description">Descripcion</label>
         <textarea
+          required
           class="inputs-testimonial textarea-testimonial"
           type=""
           id="description"
           maxlength="200"
-        >
-        </textarea>
+        ></textarea>
         <label for="opciones">calidad de servicio:</label>
-        <select class="inputs-testimonial" id="opciones">
-          <option value="opcion1">☆☆☆☆☆</option>
-          <option value="opcion2">☆☆☆☆</option>
-          <option value="opcion3">☆☆☆</option>
-          <option value="opcion3">☆☆</option>
-          <option value="opcion3">☆</option>
+        <select class="inputs-testimonial" id="opciones" required>
+          <option value="5">☆☆☆☆☆</option>
+          <option value="4">☆☆☆☆</option>
+          <option value="3">☆☆☆</option>
+          <option value="2">☆☆</option>
+          <option value="1">☆</option>
         </select>
         <div class="button-container">
-          <button type="button" class="cancelar-testimonial" onclick="closeModal()">
+          <button
+            type="button"
+            class="cancelar-testimonial"
+            onclick="closeModal()"
+          >
             cancelar
           </button>
-          <button for="testimonial-form" class="enviar-testimonial submit">
+          <button
+            onclick="closeModal()"
+            for="testimonial-form"
+            class="enviar-testimonial submit"
+          >
             enviar
           </button>
         </div>
       </form>
-
-
     </dialog>
 
     <div id="footer"></div>

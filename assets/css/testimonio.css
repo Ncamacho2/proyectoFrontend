@@ -31,8 +31,8 @@ h1 {
   box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.2);
   width: 30%;
   height: 30%;
-  min-height: 300px; /* Define una altura mínima */
-  max-height: 300px; /* Define una altura máxima */
+  min-height: 300px;
+  max-height: 300px;
   color: #000;
   font-weight: 500;
   border-radius: 50px;
@@ -90,17 +90,17 @@ h1 {
   background-color: var(--color-accent-hover);
 }
 .custom-modal {
-  position: fixed; /* Mantener el modal en una posición fija en la pantalla */
-  top: 50%; /* Posicionarlo a la mitad vertical */
-  left: 50%; /* Posicionarlo a la mitad horizontal */
-  transform: translate(-50%, -50%); /* Ajuste para centrar perfectamente */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: #bbdefb;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  z-index: 1050; /* Asegúrate de que esté por encima de otros elementos */
-  width: 50%; /* Ajusta según el tamaño deseado */
-  max-width: 500px; /* Limitar el tamaño máximo del modal */
+  z-index: 1050;
+  width: 50%;
+  max-width: 500px;
   padding: 5%;
 }
 .inputs-testimonial {
@@ -150,8 +150,26 @@ h1 {
 }
 .button-container {
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente si es necesario */
-  flex-direction: row; /* Alinea los botones en fila */
-  gap: 20px; /* Espacio entre los botones */
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+}
+.navbar-nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.separator {
+  flex-grow: 1;
+  height: 36px;
+  background-color: white;
+  margin: 0 10px;
+}
+input{
+  text-transform: lowercase;
+}
+input::first-letter{
+  text-transform: uppercase;
 }
