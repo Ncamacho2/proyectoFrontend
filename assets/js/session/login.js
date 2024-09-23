@@ -17,7 +17,7 @@ loginForm.addEventListener('submit', (e) => {
     /* INICIO DE SESIÓN ADMINISTRADOR */
     if (validUser.rol === true) {
         Swal.fire({
-            title: `Bienvenido a MedyPlus Admin ${validUser.name}`,
+            title: `Bienvenido a MedyPlus Admin ${validUser.names}`,
             icon: 'info'
         }).then((result) => {
             window.location.href = 'gestion-servicios.html'
@@ -30,7 +30,7 @@ loginForm.addEventListener('submit', (e) => {
         title: `Bienvenido a MedyPlus ${validUser.name}`,
         icon: 'info'
     }).then((result) => {
-        window.location.href = 'gestion-servicios.html'
+        window.location.href = 'gestion-perfil.html'
         localStorage.setItem('login_success', JSON.stringify(validUser))
     })
 
