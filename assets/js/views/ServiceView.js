@@ -177,10 +177,10 @@ class ServiceView {
             <td>${fechaEditado}</td>
             <td class="text-center">${servicio.is_active ? 'Activo' : 'Inactivo'}</td>
             <td class="text-center">
-              <button onclick="editarServicio(${servicio.id})" class="btn btn-sm btn-primary me-2" title="Editar">
+              <button onclick="editarServicio('${servicio.id}')" class="btn btn-sm btn-primary me-2" title="Editar">
                 <i class="fa-solid fa-pen"></i>
               </button>
-              <button onclick="eliminarServicio(${servicio.id})" class="btn btn-danger" title="Eliminar">
+              <button onclick="eliminarServicio('${servicio.id}')" class="btn btn-danger" title="Eliminar">
                 <i class="fa-solid fa-trash-can"></i>
               </button>
             </td>
@@ -351,16 +351,104 @@ window.editarServicio = async function (id) {
     const services = JSON.parse(localStorage.getItem('medicalServices'));
     const service = services.find(service => service.id === id);
 
-    // $('#nameServiceEdit').val(service.name);
-    // $('#descriptionServiceEdit').val(service.description);
-    // $('#shortDescriptionServiceEdit').val(service.short_description);
-    // $('#isFeaturedServiceEdit').prop('checked', service.is_featured);
-    // $('#serviceId').val(service.id);
+  //  Fill the form with the service data
+    $('#serviceId').val(service.id);
+    $('#nameServiceEdit').val(service.name);
+    $('#descriptionServiceEdit').val(service.description);
+    $('#shortDescriptionServiceEdit').val(service.short_description);
+    $('#isFeaturedServiceEdit').prop('checked', service.is_featured);
+    $('#serviceId').val(service.id);
+    
+
+    $('#editMainImagePreview').attr('src', service.main_image_url);
+    $('#editMainImagePreview').show();
+    $('#editSecondaryImagePreview').attr('src', service.secondary_image_url);
+    $('#editSecondaryImagePreview').show();
 
   } catch (error) {
     console.error('Error al editar el servicio:', error);
   }
 };
+
+window.editService = async function (event) {
+  event.preventDefault();
+  try {
+    const form = document.getElementById('editServiceForm');
+
+    // Subir las imágenes, VALIDANDO SI SE SUBIERON
+    const mainImageFile = $('#mainImageEdit').prop('files')[0];
+
+    const secondaryImageFile = $('#secondaryImageEdit').prop('files')[0];
+
+    let mainImageUrl = $('#editMainImagePreview').attr('src');
+    let secondaryImageUrl = $('#editSecondaryImagePreview').attr('src');
+
+    if (mainImageFile) {
+      mainImageUrl = await serviceView.uploadImage(mainImageFile);
+    } else {
+      mainImageUrl = $('#editMainImagePreview').attr('src');
+    }
+
+    if (secondaryImageFile) {
+      secondaryImageUrl = await serviceView.uploadImage(secondaryImageFile);
+    } else {
+      secondaryImageUrl = $('#editSecondaryImagePreview').attr('src');
+    }
+
+    // Asegúrate de que ambas imágenes hayan sido subidas
+    if (!mainImageUrl || !secondaryImageUrl) {
+      throw new Error('Error al subir las imágenes');
+    }
+
+    // Crear el objeto del nuevo servicio
+    const updatedService = {
+      id: $('#serviceId').val(),
+      name: $('#nameServiceEdit').val(),
+      description: $('#descriptionServiceEdit').val(),
+      short_description: $('#shortDescriptionServiceEdit').val(),
+      main_image_url: mainImageUrl,
+      secondary_image_url: secondaryImageUrl,
+      is_featured: $('#isFeaturedServiceEdit').prop('checked'),
+      is_active: true,
+      created_at: Math.floor(Date.now() / 1000),
+      updated_at: Math.floor(Date.now() / 1000)
+    };
+
+    // Guardar en localstorage
+    let services = await JSON.parse(localStorage.getItem('medicalServices')) || [];
+    
+    const index = services.findIndex(service => service.id === updatedService.id);
+    services[index] = updatedService;
+    await localStorage.setItem('medicalServices', JSON.stringify(services));
+
+    // Cerrar el modal y mostrar mensaje de éxito
+    const modalElement = await document.getElementById('editServiceModal');
+    const modal = bootstrap.Modal.getInstance(modalElement);
+    modal.hide();
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Servicio actualizado',
+      text: 'El servicio ha sido actualizado exitosamente.'
+    });
+
+    // Resetear el formulario
+    form.reset();
+    form.classList.remove('was-validated');
+
+    // Actualizar la tabla de servicios
+    await serviceView.renderServicios();
+
+  } catch (error) {
+    console.error('Error al editar el servicio:', error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Ocurrió un error al editar el servicio. Por favor, intenta nuevamente.'
+    });
+  }
+};
+
 
 window.eliminarServicio = async function (id) {
   if (confirm('¿Estás seguro de eliminar este servicio?')) {
@@ -380,6 +468,11 @@ window.eliminarServicio = async function (id) {
 $('#createServiceBtn').click(function () {
   console.log('Mostrando modal de creación de servicio');
   $('#createServiceModal').modal('show');
+});
+
+$('#editServiceBtn').click(function () {
+  // preventDefault and call createService
+  editService(event);
 });
 
 $('#saveServiceBtn').click(function () {
