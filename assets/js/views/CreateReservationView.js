@@ -29,6 +29,8 @@ class CreateReservationView {
                 title: "Reserva creada con éxito",
                 icon: "success"
             });
+
+            setTimeout(() => location.reload(), 1000);
         }).catch(error => {
             let errText = 'Por favor vuelve a intentarlo';
             if (error.status === 422) {
