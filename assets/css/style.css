@@ -227,6 +227,7 @@ body {
 
 /* Estilos para el botón "Crear Usuario" */
 
+.create-button,
 .create-user-button {
     padding: 10px 20px;
     background-color: var(--color-accent);
@@ -236,6 +237,7 @@ body {
     border-radius: 5px;
 }
 
+.create-button:hover,
 .create-user-button:hover {
     background-color: var(--color-accent-hover);
 }
@@ -675,4 +677,8 @@ header {
 
     }
     
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
