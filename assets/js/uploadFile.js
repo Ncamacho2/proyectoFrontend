@@ -4,7 +4,7 @@
   // https://firebase.google.com/docs/web/setup#available-libraries
 
   //  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-
+import {firebase} from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
 
   // Your web app's Firebase configuration
   const firebaseConfig = {
