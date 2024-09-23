@@ -26,14 +26,17 @@ class UserView {
         const users = UserService.getUsers();
         this.table.clear(); // Limpiar la tabla antes de agregar nuevos datos
         users.forEach(user => {
-            this.table.row.add([
-                user.id,
-                `${user.names} ${user.lastnames}`,
-                user.document,
-                user.phone,
-                `<button class="edit-button" data-id="${user.id}">Editar</button>
-                 <button class="delete-button" data-id="${user.id}">Eliminar</button>`
-            ]);
+            if (user.id) {
+                this.table.row.add([
+                    user.id,
+                    `${user.names} ${user.lastnames}`,
+                    user.document,
+                    user.phone,
+                    `<button class="edit-button" data-id="${user.id}">Editar</button>
+                     <button class="delete-button" data-id="${user.id}">Eliminar</button>`
+                ]);
+
+            }
         });
         this.table.draw(); // Redibujar la tabla con los nuevos datos
 
