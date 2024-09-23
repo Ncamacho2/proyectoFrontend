@@ -30,7 +30,7 @@ function insertarTestimonios(testimonios) {
             <h2 class="testimonial-name">${testimonio.name}</h2>
             <img
               loading="lazy"
-              src="/assets/img/testimonio/${testimonio.stars}star.png"
+              src="assets/img/testimonio/${testimonio.stars}star.png"
               class="testimonial-image"
             />
           </header>
