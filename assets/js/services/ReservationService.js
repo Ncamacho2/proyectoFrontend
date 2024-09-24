@@ -8,9 +8,10 @@ export default class ReservationService {
 
     // Crear una nueva reserva
     create(reservation) {
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             try {
                 this.validateData(reservation);
+                await this.all();
 
                 reservation.id = Date.now();
                 reservation.createdAt = (new Date()).toJSON();
@@ -82,6 +83,7 @@ export default class ReservationService {
     update(reservation) {
         return new Promise(async (resolve, reject) => {
             await this.all();
+            console.log(reservation);
             const index = this.reservations.findIndex(item => item.id === reservation.id);
             if (index === -1) {
                 reject(new Error("El registro no existe"));

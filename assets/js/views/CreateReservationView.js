@@ -36,7 +36,7 @@ class CreateReservationView {
                 icon: "success"
             });
 
-            setTimeout(() => location.reload(), 1000);
+            $('#reservationForm').trigger('reset');
         }).catch(error => {
             let errText = 'Por favor vuelve a intentarlo';
             if (error.status === 422) {

@@ -9,7 +9,8 @@ class ManageReservationView {
     table = null;
     reservations = [];
     professionals = [];
-    serviceType = [];
+    services = [];
+    currentReservation = null;
 
     constructor(service) {
         this.service = service;
@@ -21,7 +22,7 @@ class ManageReservationView {
             $('#viewReservationsUnmanaged').on('click', () => this.loadReservations());
             $('#viewReservationsManaged').on('click', () => this.loadReservationsManaged());
             $('#loadDemoData').on('click', () => this.loadReservations(true));
-
+            $('.edit-reservation').on('click', () => this.editReservation(this.currentReservation));
 
             this.table = $('#reservationTable').DataTable({
                 searching: false,
@@ -62,7 +63,7 @@ class ManageReservationView {
 
     // Cargar listado de profesionales y servicios
     async loadSystemData() {
-        (new ProfessionalService()).uploadDefault().then(professionals => {
+        (new ProfessionalService()).all().then(professionals => {
             this.professionals = professionals;
 
             professionals.forEach(professional => {
@@ -78,7 +79,8 @@ class ManageReservationView {
         $('#manageColumn').html('Gestionar');
 
         this.reservations.forEach(reservation => {
-            let service = `${this.getServicesTypesName(reservation.serviceType)}`;
+            let serviceName = `${this.getServiceName(reservation.serviceType)}`;
+
             let actions = '';
             if (! reservation.professionalId) {
                 actions = `<i class="fa-solid fa-trash-can delete-reservation cursor-pointer" data-id="${reservation.id}"></i>&nbsp;&nbsp;<i class="fa-solid fa-check open-modal cursor-pointer" data-id="${reservation.id}"></i>`;
@@ -89,7 +91,7 @@ class ManageReservationView {
 
             this.table.row.add([
                 reservation.id,
-                service,
+                serviceName,
                 reservation.date,
                 reservation.time,
                 reservation.patientName,
@@ -134,7 +136,7 @@ class ManageReservationView {
     openModal(reservationID) {
         this.modal = new bootstrap.Modal(document.getElementById('reservationModal'));
         let reservation = this.reservations.find(item => item.id === reservationID);
-        let serviceType = `${this.getServicesTypesName(reservation.serviceType)}`;
+        let serviceType = `${this.getServiceName(reservation.serviceType)}`;
         $("#formTitle").text(`Reserva N° ${reservation.id}`);
         $("#patientName").val(reservation.patientName);
         $("#serviceType").val(serviceType);
@@ -143,13 +145,13 @@ class ManageReservationView {
         $("#diagnostic").val(reservation.diagnostic);
         this.modal.show();
 
-        $('.edit-reservation').on('click', () => this.editReservation(reservation));
+        this.currentReservation = reservation;
     }
 
     // Editar una reserva (gestionar la reserva)
     editReservation(reservation) {
        reservation.professionalId = $("#professional").find(":selected").val();
-        this.service.update(reservation).then(isUpdated => {
+       this.service.update(reservation).then(isUpdated => {
            if (isUpdated) {
 
                $('#professional option[value=""]').attr("selected", "selected");
@@ -171,9 +173,9 @@ class ManageReservationView {
     }
 
     // Obtener los nombres del tipo de servicio
-    getServicesTypesName(serviceId) {
-        this.serviceType = serviceService.obtenerServicios();
-        return this.serviceType.find(item => item.id === parseInt(serviceId)).nombre;
+    getServiceName(serviceId) {
+        this.services = serviceService.obtenerServicios();
+        return this.services.find(item => item.id === parseInt(serviceId)).nombre;
     }
 }
 

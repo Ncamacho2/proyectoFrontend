@@ -1,4 +1,8 @@
+import AppBoot from "./AppBoot.js";
+
 document.addEventListener('DOMContentLoaded', () => {
+    new AppBoot();
+
     console.log('Aplicación iniciada correctamente');
 
     // Aquí puedes incluir lógica global
