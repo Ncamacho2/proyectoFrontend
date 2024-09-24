@@ -16,10 +16,19 @@ function loadComponent(containerSelector, filePath) {
         });
 }
 
+const components = {
+    '#header': 'partials/header.html',
+    '#footer': 'partials/footer.html',
+    '#menu': 'partials/menu.html',
+};
+
 // Cargar el header, footer y menú en todas las páginas
 document.addEventListener('DOMContentLoaded', () => {
-    loadComponent('#header', 'partials/header.html');  // Cargar el header
-    loadComponent('#footer', 'partials/footer.html');  // Cargar el footer
-    loadComponent('#menu', 'partials/menu.html');      // Cargar el menú lateral
+    Object.entries(components).forEach(entry => {
+        const [selector, path] = entry;
+
+        if (document.querySelector(selector)) {
+            loadComponent(selector, path);
+        }
+    });
 });
-    

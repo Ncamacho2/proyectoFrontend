@@ -57,8 +57,6 @@
     </div>
   </div>
 
-  <!-- Modal para Agregar Servicio --><!-- Botón para abrir el modal -->
-
   <!-- Modal para Agregar Servicio -->
   <div class="modal fade form-create" id="createServiceModal" tabindex="-1" aria-labelledby="agregarServicioModalLabel"
     aria-hidden="true">
@@ -79,11 +77,11 @@
                 El nombre debe tener entre 5 y 50 caracteres.
               </div>
             </div>
-           
+
             <div class="mb-3">
               <label for="shortDescriptionServiceCreate" class="form-label">Descripción Corta</label>
-              <textarea class="form-control" id="shortDescriptionServiceCreate" name="short_description" rows="2" required
-                minlength="10" maxlength="50"></textarea>
+              <textarea class="form-control" id="shortDescriptionServiceCreate" name="short_description" rows="2"
+                required minlength="10" maxlength="50"></textarea>
               <div class="invalid-feedback">
                 La descripción corta debe tener entre 10 y 50 caracteres.
               </div>
@@ -117,14 +115,95 @@
                 <label class="form-check-label" for="isFeaturedServiceCreate">¿Es Destacado?</label>
               </div>
             </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button id="saveServiceBtn" type="submit" class="btn btn-primary">Guardar Servicio</button>
+          </div>
+        </form>
+      </div> <!-- Este es el div que faltaba cerrar -->
+    </div>
+  </div>
+
+
+
+  <!-- Modal para Editar Servicio -->
+  <div class="modal fade form-create" id="editServiceModal" tabindex="-1" aria-labelledby="editarServicioModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <form id="editServiceForm">
+          <!-- INPUT HIDDEN serviceId -->
+          <input type="hidden" id="serviceId" name="id">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editarServicioModalLabel">Editar Servicio</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Campos del formulario -->
+            <div class="mb-3">
+              <label for="nameServiceCreate" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nameServiceEdit" name="name" required minlength="5"
+                maxlength="50">
+              <div class="invalid-feedback">
+                El nombre debe tener entre 5 y 50 caracteres.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="shortDescriptionServiceCreate" class="form-label">Descripción Corta</label>
+              <textarea class="form-control" id="shortDescriptionServiceEdit" name="short_description" rows="2" required
+                minlength="10" maxlength="50"></textarea>
+              <div class="invalid-feedback">
+                La descripción corta debe tener entre 10 y 50 caracteres.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="descriptionServiceCreate" class="form-label">Descripción</label>
+              <textarea class="form-control" id="descriptionServiceEdit" name="description" rows="4" required
+                minlength="50" maxlength="500"></textarea>
+              <div class="invalid-feedback">
+                La descripción debe tener entre 50 y 500 caracteres.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="mainImage" class="form-label">Imagen Principal</label>
+              <input type="file" class="form-control" id="mainImageEdit" name="main_image" accept="image/*" required>
+              <div class="invalid-feedback">
+                Por favor, selecciona una imagen principal.
+              </div>
+
+              <img id="editMainImagePreview" src="" alt="Previsualización Imagen Principal" style="display:none; max-width: 100%; margin-top: 10px;">
+
+            </div>
+            <div class="mb-3">
+              <label for="secondaryImage" class="form-label">Imagen Secundaria</label>
+              <input type="file" class="form-control" id="secondaryImageEdit" name="secondary_image" accept="image/*"
+                required>
+              <div class="invalid-feedback">
+                Por favor, selecciona una imagen secundaria.
+              </div>
+
+              <img id="editSecondaryImagePreview" src="" alt="Previsualización Imagen Secundaria" style="display:none; max-width: 100%; margin-top: 10px;">
+
+              <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" id="isFeaturedServiceEdit" name="is_featured">
+                <label class="form-check-label" for="isFeaturedServiceEdit">¿Es Destacado?</label>
+              </div>
+            </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button id="saveServiceBtn" type="submit" class="btn btn-primary">Guardar Servicio</button>
+              <button id="editServiceBtn" type="submit" class="btn btn-primary">Editar Servicio</button>
             </div>
         </form>
       </div>
     </div>
   </div>
+
+
+
 
 
   <!-- Contenedor para el footer -->

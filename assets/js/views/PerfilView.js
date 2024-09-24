@@ -3,22 +3,9 @@ import UserService from '../services/UserService.js';
 
 class PerfilView {
     constructor() {
-        this.table = $('#usersTable').DataTable({
-            columns: [
-                { title: "ID" },
-                { title: "Nombre Completo" },
-                { title: "Documento" },
-                { title: "Teléfono" }
-            ],
-            responsive: true,
-
-        });
 
         this.renderUsers();
         // Botón para crear usuario
-        document.getElementById('createUserBtn').addEventListener('click', () => {
-            this.createUser();
-        });
         document.getElementById('openEditProfileModal').addEventListener('click', () => {
             this.openEditUserModal();
         });
@@ -26,205 +13,111 @@ class PerfilView {
 
     renderUsers() {
         const users = UserService.getUsers();
-        this.table.clear(); // Limpiar la tabla antes de agregar nuevos datos
-        users.forEach(user => {
-            this.table.row.add([
-                user.id,
-                `${user.names} ${user.lastnames}`,
-                user.document,
-                user.phone,
-                `<button class="edit-button" data-id="${user.id}">Editar</button>
-                 <button class="delete-button" data-id="${user.id}">Eliminar</button>`
-            ]);
-        });
-        this.table.draw(); // Redibujar la tabla con los nuevos datos
-
         // Agregar eventos a los botones de edición y eliminación
         this.addEventListeners();
     }
 
     addEventListeners() {
-        // Manejar la edición de usuarios
-        document.querySelectorAll('.edit-button').forEach(button => {
-            button.addEventListener('click', (event) => {
-                const userId = event.target.getAttribute('data-id');
-                this.editUser(userId);
-            });
-        });
 
-        // Manejar la eliminación de usuarios
-        document.querySelectorAll('.delete-button').forEach(button => {
-            button.addEventListener('click', (event) => {
-                const userId = event.target.getAttribute('data-id');
-                this.deleteUser(userId);
-            });
-        });
     }
 
-    // Función para crear un nuevo usuario usando SweetAlert2
-    createUser() {
+    // Función para abrir modal de edición de usuarios
+    openEditUserModal() {
+        // Datos actuales del usuario
+        const tipoDocumento = document.getElementById('user-tipo-documento').textContent;
+        const documento = document.getElementById('user-documento').textContent;
+        const nombre = document.getElementById('user-nombre').textContent;
+        const email = document.getElementById('user-email').textContent;
+        const telefono = document.getElementById('user-telefono').textContent;
+        const direccion = document.getElementById('user-direccion').textContent;
+        const plan = document.getElementById('user-plan').textContent;
+
+        // Mostrar el modal de SweetAlert2 con los campos para editar
         Swal.fire({
-            title: 'Crear Nuevo Usuario',
-            html: `<input id="swal-names" class="swal2-input" placeholder="Nombres">
-                 <input id="swal-lastnames" class="swal2-input" placeholder="Apellidos">
-                 <input id="swal-document" class="swal2-input" placeholder="Documento">
-                 <input id="swal-phone" class="swal2-input" placeholder="Teléfono">
-                 <input id="swal-address" class="swal2-input" placeholder="Dirección">
-                 <input id="swal-birth_date" class="swal2-input" type="date" placeholder="Fecha de Nacimiento">`,
-            focusConfirm: false,
-            showCancelButton: true,
-            confirmButtonText: 'Crear',
-            cancelButtonText: 'Cancelar',
-            preConfirm: () => {
-                const names = document.getElementById('swal-names');
-                const lastnames = document.getElementById('swal-lastnames');
-                const documentId = document.getElementById('swal-document');
-                const phone = document.getElementById('swal-phone');
-                const address = document.getElementById('swal-address');
-                const birth_date = document.getElementById('swal-birth_date');
-
-                if (!names || !lastnames || !documentId || !phone || !address || !birth_date) {
-                    Swal.showValidationMessage(`Por favor, rellena todos los campos`);
-                    return false;
-                }
-
-                return {
-                    names: names.value,
-                    lastnames: lastnames.value,
-                    documentId: documentId.value,
-                    phone: phone.value,
-                    address: address.value,
-                    birth_date: birth_date.value
-                };
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                UserService.createUser(
-                    1, // ID del role
-                    1, // Tipo de documento
-                    result.value.documentId,
-                    null, // Image URL
-                    result.value.names,
-                    result.value.lastnames,
-                    result.value.address,
-                    result.value.phone,
-                    result.value.birth_date
-                );
-                this.renderUsers(); // Redibujar la tabla con el nuevo usuario
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Usuario creado',
-                    text: `El usuario ${result.value.names} ${result.value.lastnames} ha sido creado exitosamente.`
-                });
-            }
-        });
-    }
-
-    // Función para editar un usuario
-    editUser(userId) {
-        const user = UserService.getUserById(userId);
-        Swal.fire({
-            title: 'Editar Usuario',
-            html: `<input id="swal-names" class="swal2-input" value="${user.names}" placeholder="Nombres">
-                 <input id="swal-lastnames" class="swal2-input" value="${user.lastnames}" placeholder="Apellidos">
-                 <input id="swal-document" class="swal2-input" value="${user.document}" placeholder="Documento">
-                 <input id="swal-phone" class="swal2-input" value="${user.phone}" placeholder="Teléfono">
-                 <input id="swal-address" class="swal2-input" value="${user.address}" placeholder="Dirección">
-                 <input id="swal-birth_date" class="swal2-input" type="date" value="${user.birth_date}" placeholder="Fecha de Nacimiento">`,
-            focusConfirm: false,
-            showCancelButton: true,
-            confirmButtonText: 'Guardar',
-            cancelButtonText: 'Cancelar',
-            preConfirm: () => {
-                const names = document.getElementById('swal-names');
-                const lastnames = document.getElementById('swal-lastnames');
-                const documentId = document.getElementById('swal-document');
-                const phone = document.getElementById('swal-phone');
-                const address = document.getElementById('swal-address');
-                const birth_date = document.getElementById('swal-birth_date');
-
-                if (!names || !lastnames || !document || !phone || !address || !birth_date) {
-                    Swal.showValidationMessage(`Por favor, rellena todos los campos`);
-                    return false;
-                }
-
-                return {
-                    names: names.value,
-                    lastnames: lastnames.value,
-                    documentId: documentId.value,
-                    phone: phone.value,
-                    address: address.value,
-                    birth_date: birth_date.value
-                };
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                UserService.updateUser(userId, result.value); // Actualizar el usuario
-                this.renderUsers(); // Redibujar la tabla con los cambios
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Usuario actualizado',
-                    text: `El usuario ${result.value.names} ${result.value.lastnames} ha sido actualizado exitosamente.`
-                });
-            }
-        });
-    }
-
-    // Función para eliminar un usuario
-    deleteUser(userId) {
-            Swal.fire({
-                title: '¿Estás seguro?',
-                text: "No podrás revertir esta acción",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Eliminar',
-                cancelButtonText: 'Cancelar',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    UserService.deleteUser(userId); // Eliminar el usuario
-                    this.renderUsers(); // Redibujar la tabla sin el usuario
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Eliminado',
-                        text: 'El usuario ha sido eliminado.'
-                    });
-                }
-            });
-
-        }
-        // Función para abrir modal de edición de usuarios
-    openEditUserModal(id, nombre, email, rol) {
-        Swal.fire({
-            title: 'Editar Usuario',
+            title: 'Editar Información de Perfil',
             html: `
-            <div>
-                <label for="nombre" style="font-weight: bold;">Nombre</label>
-                <input id="nombre" class="swal2-input" type="text" value="${nombre}" style="width: 100%;">
-
-                <label for="email" style="font-weight: bold;">Correo Electrónico</label>
-                <input id="email" class="swal2-input" type="email" value="${email}" style="width: 100%;">
-
-                <label for="rol" style="font-weight: bold;">Rol</label>
-                <select id="rol" class="swal2-input" style="width: 100%;">
-                    <option value="Administrador" ${rol === 'Administrador' ? 'selected' : ''}>Administrador</option>
-                    <option value="Editor" ${rol === 'Editor' ? 'selected' : ''}>Editor</option>
-                    <option value="Visualizador" ${rol === 'Visualizador' ? 'selected' : ''}>Visualizador</option>
-                </select>
-            </div>
-        `,
+                <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 10px;">
+    
+                    <div style="width: 80%; display: flex; flex-direction: column; align-items: flex-start;">
+                        <label for="tipoDocumento" style="font-weight: bold;">Tipo de Documento</label>
+                        <input id="tipoDocumento" class="swal2-input" type="text" value="${tipoDocumento}" style="width: 100%;">
+                    </div>
+    
+                    <div style="width: 80%; display: flex; flex-direction: column; align-items: flex-start;">
+                        <label for="documento" style="font-weight: bold;">Documento</label>
+                        <input id="documento" class="swal2-input" type="text" value="${documento}" style="width: 100%;">
+                    </div>
+    
+                    <div style="width: 80%; display: flex; flex-direction: column; align-items: flex-start;">
+                        <label for="nombre" style="font-weight: bold;">Nombre</label>
+                        <input id="nombre" class="swal2-input" type="text" value="${nombre}" style="width: 100%;">
+                    </div>
+    
+                    <div style="width: 80%; display: flex; flex-direction: column; align-items: flex-start;">
+                        <label for="email" style="font-weight: bold;">Correo Electrónico</label>
+                        <input id="email" class="swal2-input" type="email" value="${email}" style="width: 100%;">
+                    </div>
+    
+                    <div style="width: 80%; display: flex; flex-direction: column; align-items: flex-start;">
+                        <label for="telefono" style="font-weight: bold;">Teléfono</label>
+                        <input id="telefono" class="swal2-input" type="tel" value="${telefono}" style="width: 100%;">
+                    </div>
+    
+                    <div style="width: 80%; display: flex; flex-direction: column; align-items: flex-start;">
+                        <label for="direccion" style="font-weight: bold;">Dirección</label>
+                        <input id="direccion" class="swal2-input" type="text" value="${direccion}" style="width: 100%;">
+                    </div>
+    
+                    <div style="width: 80%; display: flex; flex-direction: column; align-items: flex-start;">
+                        <label for="plan" style="font-weight: bold;">Plan Actual</label>
+                        <input id="plan" class="swal2-input" type="text" value="${plan}" style="width: 100%;">
+                    </div>
+    
+                </div>
+            `,
+            focusConfirm: false,
             showCancelButton: true,
-            confirmButtonText: 'Guardar',
+            confirmButtonText: 'Guardar Cambios',
             cancelButtonText: 'Cancelar',
             preConfirm: () => {
-                const nombreNuevo = document.getElementById('nombre').value;
-                const emailNuevo = document.getElementById('email').value;
-                const rolNuevo = document.getElementById('rol').value;
+                const tipoDocumentoNuevo = document.getElementById('tipoDocumento').value.trim();
+                const documentoNuevo = document.getElementById('documento').value.trim();
+                const nombreNuevo = document.getElementById('nombre').value.trim();
+                const emailNuevo = document.getElementById('email').value.trim();
+                const telefonoNuevo = document.getElementById('telefono').value.trim();
+                const direccionNueva = document.getElementById('direccion').value.trim();
+                const planNuevo = document.getElementById('plan').value.trim();
 
-                // Aquí puedes enviar los datos actualizados al servidor y actualizar la tabla
-                console.log(`ID: ${id}, Nombre: ${nombreNuevo}, Email: ${emailNuevo}, Rol: ${rolNuevo}`);
+                // Validación de los campos (todos los campos son obligatorios)
+                if (!tipoDocumentoNuevo || !documentoNuevo || !nombreNuevo || !emailNuevo || !telefonoNuevo || !direccionNueva || !planNuevo) {
+                    Swal.showValidationMessage(`Todos los campos son obligatorios`);
+                    return false;
+                } else if (!validateEmail(emailNuevo)) {
+                    Swal.showValidationMessage(`Por favor, introduce un correo electrónico válido`);
+                    return false;
+                } else {
+                    // Actualizar la información en la página (simulación)
+                    document.getElementById('user-tipo-documento').textContent = tipoDocumentoNuevo;
+                    document.getElementById('user-documento').textContent = documentoNuevo;
+                    document.getElementById('user-nombre').textContent = nombreNuevo;
+                    document.getElementById('user-email').textContent = emailNuevo;
+                    document.getElementById('user-telefono').textContent = telefonoNuevo;
+                    document.getElementById('user-direccion').textContent = direccionNueva;
+                    document.getElementById('user-plan').textContent = planNuevo;
+
+                    Swal.fire('¡Actualizado!', 'Tu información ha sido actualizada correctamente.', 'success');
+                }
             }
         });
     }
+
+    // Función para validar el formato del correo electrónico
+    validateEmail(email) {
+        const re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+
+
 
 }
 

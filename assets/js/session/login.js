@@ -1,26 +1,26 @@
 const loginForm = document.querySelector('#loginForm')
 
-loginForm.addEventListener('submit', (e)=>{
+loginForm.addEventListener('submit', (e) => {
     e.preventDefault()
     const email = document.querySelector('#email').value
     const password = document.querySelector('#password').value
 
     const Users = JSON.parse(localStorage.getItem('users')) || []
-    
+
     /* VALIDACIÓN */
     const validUser = Users.find(user => user.email === email && user.password === password)
 
-    if(!validUser){
+    if (!validUser) {
         return alert("Usuario y/o contraseña incorrectos")
     }
 
     /* INICIO DE SESIÓN ADMINISTRADOR */
-    if(validUser.rol === true){
+    if (validUser.rol === true) {
         Swal.fire({
-            title: `Bienvenido a MedyPlus Admin ${validUser.name}`,
+            title: `Bienvenido a MedyPlus Admin ${validUser.names}`,
             icon: 'info'
         }).then((result) => {
-            window.location.href = 'Admin/homeAdmin.html'
+            window.location.href = 'gestion-servicios.html'
             localStorage.setItem('login_success', JSON.stringify(validUser))
         })
     }
@@ -30,10 +30,10 @@ loginForm.addEventListener('submit', (e)=>{
         title: `Bienvenido a MedyPlus ${validUser.name}`,
         icon: 'info'
     }).then((result) => {
-        window.location.href = 'Users/homeUser.html'
+        window.location.href = 'gestion-perfil.html'
         localStorage.setItem('login_success', JSON.stringify(validUser))
     })
 
-    
-    
+
+
 })

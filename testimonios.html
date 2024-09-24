@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/assets/css/testimonio.css" />
+    <link rel="stylesheet" href="assets/css/testimonio.css" />
     <title>MedyPlus</title>
     <link rel="icon" type="image/svg+xml" href="/assets/img/lg.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/index.css" />
     <link rel="stylesheet" href="assets/css/testimonio.css" />
-  </head>
+</head>
 
-  <body>
+<body>
     <div id="header"></div>
 
     <section class="testimonial-group"></section>
@@ -28,53 +23,40 @@
       cuentanos tu experiencia
     </button>
     <dialog class="custom-modal" id="mainModal">
-      <form id="testimonial-form" class="form-create-testimonial" action="">
-        <h1>Deja tu testimonio</h1>
-        <label for="nombre">Primer nombre</label>
-        <input class="inputs-testimonial" type="text" id="nombre" required />
-        <label for="nombre">Primer apellido</label>
-        <input class="inputs-testimonial" type="text" id="apellido" required />
+        <form id="testimonial-form" class="form-create-testimonial" action="">
+            <h1>Deja tu testimonio</h1>
+            <label for="nombre">Primer nombre</label>
+            <input class="inputs-testimonial" type="text" id="nombre" required />
+            <label for="nombre">Primer apellido</label>
+            <input class="inputs-testimonial" type="text" id="apellido" required />
 
-        <label for="tittle">Titulo</label>
-        <input class="inputs-testimonial" type="text" id="titulo" required />
-        <label for="description">Descripcion</label>
-        <textarea
-          required
-          class="inputs-testimonial textarea-testimonial"
-          type=""
-          id="description"
-          maxlength="200"
-        ></textarea>
-        <label for="opciones">calidad de servicio:</label>
-        <select class="inputs-testimonial" id="opciones" required>
+            <label for="tittle">Titulo</label>
+            <input class="inputs-testimonial" type="text" id="titulo" required />
+            <label for="description">Descripcion</label>
+            <textarea required class="inputs-testimonial textarea-testimonial" type="" id="description" maxlength="200"></textarea>
+            <label for="opciones">calidad de servicio:</label>
+            <select class="inputs-testimonial" id="opciones" required>
           <option value="5">☆☆☆☆☆</option>
           <option value="4">☆☆☆☆</option>
           <option value="3">☆☆☆</option>
           <option value="2">☆☆</option>
           <option value="1">☆</option>
         </select>
-        <div class="button-container">
-          <button
-            type="button"
-            class="cancelar-testimonial"
-            onclick="closeModal()"
-          >
+            <div class="button-container">
+                <button type="button" class="cancelar-testimonial" onclick="closeModal()">
             cancelar
           </button>
-          <button
-            onclick="closeModal()"
-            for="testimonial-form"
-            class="enviar-testimonial submit"
-          >
+                <button onclick="closeModal()" for="testimonial-form" class="enviar-testimonial submit">
             enviar
           </button>
-        </div>
-      </form>
+            </div>
+        </form>
     </dialog>
 
     <div id="footer"></div>
-  </body>
-  <script src="/assets/js/testimonios/testimonios.js"></script>
-  <script src="assets/js/components.js"></script>
-  <script src="assets/js/testimonios/calificar.js"></script>
+</body>
+<script src="assets/js/testimonios/testimonios.js"></script>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/testimonios/calificar.js"></script>
+
 </html>
