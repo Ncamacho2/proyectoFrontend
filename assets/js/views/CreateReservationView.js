@@ -1,12 +1,17 @@
 import ReservationService from "../services/ReservationService.js";
 import Reservation from "../entities/Reservation.js";
+import ServiceService from "../services/ServiceService.js";
 
 class CreateReservationView {
+
+    serviceTypes = [];
     constructor(service) {
         this.service = service;
     }
 
+    // Relacionar evento con elemento del body
     render() {
+        this.loadServiceTypes();
         document.addEventListener('DOMContentLoaded', () => {
              $('#reservationForm').on('submit', event => {
                  event.preventDefault();
@@ -15,6 +20,7 @@ class CreateReservationView {
         });
     }
 
+    // Crear una reserva
     createReservation() {
         let reservation = new Reservation(
             $('#patientName').val(),
@@ -43,6 +49,15 @@ class CreateReservationView {
                 icon: "error"
             });
         });
+    }
+
+    // Cargar tipos de servicio
+    loadServiceTypes() {
+        this.serviceTypes = ServiceService.obtenerServicios();
+        this.serviceTypes.forEach(service => {
+            let optionHTML = `<option value="${service.id}">${service.nombre}</option>`;
+            $("#serviceType").append(optionHTML);
+        })
     }
 }
 

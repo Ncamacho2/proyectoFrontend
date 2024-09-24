@@ -6,6 +6,7 @@ export default class ReservationService {
         this.reservations = JSON.parse(localStorage.getItem("reservations")) || [];
     }
 
+    // Crear una nueva reserva
     create(reservation) {
         return new Promise((resolve, reject) => {
             try {
@@ -23,6 +24,7 @@ export default class ReservationService {
         });
     }
 
+    // Validaciones para el formulario de reservas
     validateData(reservation) {
         let err = new Error();
         err.status = 422;
@@ -51,6 +53,7 @@ export default class ReservationService {
         })
     }
 
+    // Obtener las reservas por estado Gestionadas/No Gestionadas
     getByStatus(isManaged) {
         return new Promise(async (resolve) => {
             await this.all();
@@ -65,10 +68,12 @@ export default class ReservationService {
         });
     }
 
+    // Obtener las reservas no gestionadas
     getUnmanaged() {
         return this.getByStatus(false);
     }
 
+    // Obtener las reservas gestionadas
     getManaged() {
         return this.getByStatus(true);
     }
