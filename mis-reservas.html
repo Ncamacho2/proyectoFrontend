@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+    <!-- Incluir Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <!-- Incluir DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <!-- DataTables Responsive CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+
+
+    <!-- Incluir SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Tu CSS personalizado -->
+</head>
+
+<body>
+    <!-- Contenedor para el header -->
+    <div id="header"></div>
+    <!-- Contenido principal -->
+    <div class="main-layout">
+        <!-- Menú lateral -->
+        <div id="menu"></div>
+
+        <div class="container-main">
+            <div class="table-container">
+                <h1>Mis reservas</h1>
+                <table class="table table-bordered display responsive nowrap" id="mis-reservas">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>descripcion</th>
+                            <th>costo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Contenedor para el footer -->
+    <div id="footer"></div>
+    <script type="module" src="assets/js/services/UserService.js"></script>
+    <script type="module" src="assets/js/views/UserView.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="/assets/js/reservas-usuario/listar-reservas.js"></script>
+</body>
+
+</html>

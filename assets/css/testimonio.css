@@ -1,9 +1,26 @@
+:root {
+  --color-primary: #003366;
+  --color-secondary: #007bff;
+  --color-tertiary: #555555;
+  --color-text: #ffffff;
+  --color-background: #f4f4f4;
+  --color-border: #ddd;
+  --color-hover-primary: #0056b3;
+  --color-hover-secondary: #0069d9;
+  --color-accent: #4caf50;
+  --color-accent-hover: #45a049;
+  --color-bg-card: white;
+}
+
 h1 {
   text-align: center;
 }
 .testimonial-group {
   margin: auto;
   margin: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .testimonial-content {
@@ -14,6 +31,8 @@ h1 {
   box-shadow: 15px 15px 4px rgba(0, 0, 0, 0.2);
   width: 30%;
   height: 30%;
+  min-height: 300px;
+  max-height: 300px;
   color: #000;
   font-weight: 500;
   border-radius: 50px;
@@ -55,4 +74,102 @@ h1 {
   letter-spacing: 0.1px;
   margin-top: 12px;
   font: 17px/20px Roboto;
+}
+.create-testimonial {
+  margin: auto;
+  display: block;
+  padding: 15px 20px;
+  background-color: var(--color-accent);
+  color: var(--color-text-light);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 50px;
+}
+.create-testimonial:hover {
+  background-color: var(--color-accent-hover);
+}
+.custom-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #bbdefb;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1050;
+  width: 50%;
+  max-width: 500px;
+  padding: 5%;
+}
+.inputs-testimonial {
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+}
+
+.custom-modal::backdrop {
+  background-color: rgba(1, 1, 1, 0.5);
+}
+.form-create-testimonial {
+  text-align: center;
+  align-items: center;
+}
+.textarea-testimonial {
+  padding: 5px;
+  min-width: 100%;
+  max-width: 100%;;
+  min-height: 130px;
+  max-height: 130px;
+}
+.enviar-testimonial {
+  display: inline-block;
+  margin: auto;
+  padding: 15px 20px;
+  margin-top: 30px;
+  background-color: var(--color-accent);
+  color: var(--color-text-light);
+  border: none;
+  cursor: pointer;
+
+}
+.cancelar-testimonial{
+  margin-top: 20px;
+  display: inline-block;
+  margin: auto;
+  margin-top: 30px;
+  padding: 15px 20px;
+  background-color: red;
+  color: black;
+  border: none;
+  cursor: pointer;
+
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+}
+.navbar-nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.separator {
+  flex-grow: 1;
+  height: 36px;
+  background-color: white;
+  margin: 0 10px;
+}
+input{
+  text-transform: lowercase;
+}
+input::first-letter{
+  text-transform: uppercase;
 }
