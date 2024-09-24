@@ -37,9 +37,9 @@ const serviciosDePrueba = [
   },
 ];
 
-localStorage.setItem("servicios", JSON.stringify(serviciosDePrueba));
+localStorage.setItem("servicios2", JSON.stringify(serviciosDePrueba));
 function cargarServicios() {
-  const servicios = JSON.parse(localStorage.getItem("servicios")) || [];
+  const servicios = JSON.parse(localStorage.getItem("servicios2")) || [];
 
   const tbody = document.querySelector("#mis-reservas tbody");
 
