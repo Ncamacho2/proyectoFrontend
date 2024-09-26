@@ -1,10 +1,12 @@
-class ContactRequest {
-    constructor(id, id_user, names, lastnames, address, phone) {
-        this.id = id;
-        this.id_user = id_user;
-        this.names = names;
-        this.lastnames = lastnames;
-        this.address = address;
+export default class ContactRequest {
+    id;
+    createdAt;
+
+    constructor(name, email, phone, subject, message) {
+        this.name = name;
+        this.email = email;
         this.phone = phone;
+        this.subject = subject;
+        this.message = message;
     }
 }
