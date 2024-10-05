@@ -36,7 +36,7 @@ export default class ReservationService {
         } else if (!reservation.serviceType || reservation.serviceType.length < 1) {
             err.message = 'El tipo de servicio es obligatorio';
         } else if (!reservation.date || reservation.date.length < 1) {
-            err.message = 'la fecha de la reservación es obligatorio';
+            err.message = 'La fecha de la reservación es obligatorio';
             throw err;
         } else if (!reservation.time || reservation.time.length < 0) {
             err.message = 'El tiempo de servicio es obligatorio';

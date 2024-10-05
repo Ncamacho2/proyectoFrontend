@@ -24,32 +24,33 @@
 <body>
     <!-- Contenedor para el header -->
     <div id="header"></div>
+
     <!-- Contenido principal -->
     <div class="main-layout">
         <div class="container-fluid mt-5" style="margin-left: 0 !important;">
             <div class="d-flex justify-content-center">
                 <div class="card card-form shadow" style="width: 18rem;">
                     <div class="card-body">
-                        <form>
+                        <form id="contactForm" method="post">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="name" aria-describedby="nameHelp">
+                                <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Ingrese su nombre">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo Electrónico *</label>
-                                <input type="text" class="form-control" id="email" aria-describedby="emailHelp" required>
+                                <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email@ejemplo.com" required>
                             </div>
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Teléfono</label>
-                                <input type="text" class="form-control" id="phone" aria-describedby="phoneHelp">
+                                <input type="text" class="form-control" id="phone" aria-describedby="phoneHelp" placeholder="Ingrese solo números">
                             </div>
                             <div class="mb-3">
                                 <label for="subject" class="form-label">Asunto</label>
-                                <input type="text" class="form-control" id="subject" aria-describedby="subjectHelp">
+                                <input type="text" class="form-control" id="subject" aria-describedby="subjectHelp" placeholder="Ingrese asunto">
                             </div>
                             <div class="mb-3">
                                 <label for="message" class="form-label">Mensaje *</label>
-                                <textarea class="form-control" id="message" aria-describedby="messageHelp" required></textarea>
+                                <textarea type="text" class="form-control" id="message" aria-describedby="messageHelp" placeholder="Ingrese su mensaje" required></textarea>
                             </div>
                             <div class="d-grid gap-2">
                                 <button class="btn btn-submit btn-success" type="submit">Enviar</button>
@@ -74,6 +75,10 @@
 
     <script src="assets/js/app.js" type="module"></script>
     <script src="assets/js/components.js"></script>
+
+    <!--incluir el archivo de servicio y lógica de contáctanos-->
+    <script type="module" src="assets/js/services/ContactRequestService.js"></script>
+    <script type="module" src="assets/js/views/CreateContactRequestView.js"></script>
 </body>
 
 </html>
