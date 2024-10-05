@@ -6,7 +6,6 @@ class ManageContactRequestView {
     table = null;
     contactRequest = [];
 
-
     constructor(service) {
         this.service = service;
     }
@@ -56,8 +55,6 @@ class ManageContactRequestView {
 
         this.table.draw(); // Redibujar la tabla con los nuevos datos
     }
-
-
 }
 
 const view= new ManageContactRequestView(new ContactRequestService());
