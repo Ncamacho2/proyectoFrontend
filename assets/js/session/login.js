@@ -11,7 +11,13 @@ loginForm.addEventListener('submit', (e) => {
     const validUser = Users.find(user => user.email === email && user.password === password)
 
     if (!validUser) {
-        return alert("Usuario y/o contraseña incorrectos")
+        return Swal.fire({
+            title: `Usuario y/o contraseña incorrectos`,
+            icon: 'error'
+        }).then((result) => {
+            window.location.href = 'login.html'
+        })
+
     }
 
     /* INICIO DE SESIÓN ADMINISTRADOR */
@@ -22,16 +28,18 @@ loginForm.addEventListener('submit', (e) => {
         }).then((result) => {
             window.location.href = 'gestion-servicios.html'
             localStorage.setItem('login_success', JSON.stringify(validUser))
+            localStorage.setItem('isAuthenticated', 'true');
         })
     }
 
     /* INICIO DE SESIÓN CLIENTE */
     Swal.fire({
-        title: `Bienvenido a MedyPlus ${validUser.name}`,
+        title: `Bienvenido a MedyPlus ${validUser.names}`,
         icon: 'info'
     }).then((result) => {
         window.location.href = 'gestion-perfil.html'
         localStorage.setItem('login_success', JSON.stringify(validUser))
+        localStorage.setItem('isAuthenticated', 'true');
     })
 
 

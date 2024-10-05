@@ -12,7 +12,17 @@ class PerfilView {
     }
 
     renderUsers() {
-        const users = UserService.getUsers();
+        const userlog = JSON.parse(localStorage.getItem('login_success')) || []
+
+        const user = UserService.getUserById(userlog.id);
+
+        document.getElementById('user-tipo-documento').textContent = user.document_type;
+        document.getElementById('user-documento').textContent = user.document;
+        document.getElementById('user-nombre').textContent = user.names;
+        document.getElementById('user-email').textContent = user.email;
+        document.getElementById('user-telefono').textContent = user.phone;
+        document.getElementById('user-direccion').textContent = user.address;
+        document.getElementById('user-plan').textContent;
         // Agregar eventos a los botones de edición y eliminación
         this.addEventListeners();
     }
@@ -23,6 +33,7 @@ class PerfilView {
 
     // Función para abrir modal de edición de usuarios
     openEditUserModal() {
+
         // Datos actuales del usuario
         const tipoDocumento = document.getElementById('user-tipo-documento').textContent;
         const documento = document.getElementById('user-documento').textContent;
@@ -87,15 +98,34 @@ class PerfilView {
                 const telefonoNuevo = document.getElementById('telefono').value.trim();
                 const direccionNueva = document.getElementById('direccion').value.trim();
                 const planNuevo = document.getElementById('plan').value.trim();
+                const re = /\S+@\S+\.\S+/;
 
                 // Validación de los campos (todos los campos son obligatorios)
                 if (!tipoDocumentoNuevo || !documentoNuevo || !nombreNuevo || !emailNuevo || !telefonoNuevo || !direccionNueva || !planNuevo) {
                     Swal.showValidationMessage(`Todos los campos son obligatorios`);
                     return false;
-                } else if (!validateEmail(emailNuevo)) {
+                } else if (!re.test(emailNuevo)) {
                     Swal.showValidationMessage(`Por favor, introduce un correo electrónico válido`);
                     return false;
                 } else {
+                    const userlog = JSON.parse(localStorage.getItem('login_success')) || []
+                    const user = UserService.getUserById(userlog.id);
+                    const users = UserService.getUsers();
+                    const userIndex = users.findIndex(usermem => usermem.id === user.id);
+
+                    user.document_type = tipoDocumentoNuevo;
+                    user.document = documentoNuevo;
+                    user.names = nombreNuevo;
+                    user.email = emailNuevo;
+                    user.phone = telefonoNuevo;
+                    user.address = direccionNueva;
+                    localStorage.setItem('login_success', JSON.stringify(user))
+                        // Actualizar el usuario en la posición encontrada
+                    users[userIndex] = {...users[userIndex], ...user };
+
+                    // Guardar la lista actualizada en localStorage
+                    localStorage.setItem('users', JSON.stringify(users));
+
                     // Actualizar la información en la página (simulación)
                     document.getElementById('user-tipo-documento').textContent = tipoDocumentoNuevo;
                     document.getElementById('user-documento').textContent = documentoNuevo;

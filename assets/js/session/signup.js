@@ -25,7 +25,7 @@ signupForm.addEventListener('submit', (e) => {
         Users.length + 1, // ID único
         1, // ID del rol (por defecto 1)
         "CC", // Tipo de documento
-        document, // Documento
+        numberDoc, // Documento
         '', // URL de la imagen (opcional)
         name, // Nombres
         "", // Apellidos
@@ -40,7 +40,7 @@ signupForm.addEventListener('submit', (e) => {
 
     // Agregar el nuevo usuario a la lista de usuarios
     Users.push(newUser);
-    Users.push({ name: name, date: date, numberDoc: numberDoc, email: email, password: password, rol: rol })
+    //Users.push({ name: name, date: date, numberDoc: numberDoc, email: email, password: password, rol: rol })
     localStorage.setItem('users', JSON.stringify(Users))
 
     /* ALERTA */

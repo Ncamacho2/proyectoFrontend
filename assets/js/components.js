@@ -1,4 +1,3 @@
-
 // Función para cargar un archivo HTML en un contenedor
 function loadComponent(containerSelector, filePath) {
     fetch(filePath)
@@ -10,14 +9,29 @@ function loadComponent(containerSelector, filePath) {
         })
         .then(data => {
             document.querySelector(containerSelector).innerHTML = data;
+            // Agregar el evento al botón de logout
+            document.querySelector('#logoutButton').addEventListener('click', logoutUser);
         })
         .catch(error => {
             console.error('Error:', error);
         });
 }
 
+// Simulación de verificación de estado de autenticación
+function isUserLoggedIn() {
+    // Aquí puedes agregar tu lógica real, por ejemplo, comprobar el localStorage
+    if (localStorage.getItem('isAuthenticated') === 'true') {
+
+        return localStorage.getItem('isAuthenticated') === 'true';
+
+    }
+    logoutUser();
+
+
+}
+
 const components = {
-    '#header': 'partials/header.html',
+    '#header': isUserLoggedIn() ? 'partials/header-logged-in.html' : 'partials/header.html', // Diferente según el estado de login
     '#footer': 'partials/footer.html',
     '#menu': 'partials/menu.html',
 };
@@ -32,3 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// Función para hacer logout
+function logoutUser() {
+    // Eliminar los datos de login del localStorage
+    localStorage.removeItem('login_success');
+    localStorage.removeItem('isAuthenticated');
+
+    // Redirigir a la página de login
+    window.location.href = 'login.html';
+}
